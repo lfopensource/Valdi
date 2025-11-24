@@ -55,7 +55,7 @@ cd "$DEST" && zip -qqr "$ABS_DEST" .
     ctx.actions.run_shell(
         inputs = depset(all_assets),
         tools = [script],
-        outputs = [out_zip, scratch],  # scratch now declared as produced
+        outputs = [out_zip, scratch],
         command = script.path,
         progress_message = "Collecting Android assets for %{label}",
     )
@@ -66,7 +66,7 @@ collect_android_assets = rule(
     implementation = _collect_assets_impl,
     attrs = {
         "deps": attr.label_list(
-            allow_rules = ["android_library", "aar_import"],
+            allow_rules = ["android_library", "aar_import", "kt_android_library"],
             allow_files = False,
         ),
     },

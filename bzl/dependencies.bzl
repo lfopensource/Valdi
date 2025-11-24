@@ -69,15 +69,10 @@ def setup_dependencies(workspace_root = None):
         strip_prefix = "rules_android-5e74650496dff30e97b8eee5a8b12968de3bdec3",
         patch_args = ["-p1"],
         patches = [
-            # We can probably move to a more recent upstream commit and abandon these three patches in the future
-            # Right now there's an error with regards to io_bazel_rules_go that can't easily be resolved
             "@valdi//third-party/build_bazel_rules_android/patches:rules_android_rules_attrs.patch",
             "@valdi//third-party/build_bazel_rules_android/patches:rules_android_rules_android_local_test.patch",
             "@valdi//third-party/build_bazel_rules_android/patches:rules_android_android_rules.patch",
-            # Patch to propgate resources in aar_import rule
             "@valdi//third-party/build_bazel_rules_android/patches:rules_android_rules_aar_import.patch",
-            # Patch to fix StarlarkAndroidResourcesInfo provider loading
-            "@valdi//third-party/build_bazel_rules_android/patches:rules_android_starlark_providers_fix.patch",
         ],
     )
 
